@@ -27,20 +27,20 @@ Note: if you use multiple ad networks(for example 3 or 4 ad networks) in one pro
 ★ IOS
 
 # AD TYPES:
-★ Banner
+★ Banner(Admob)
 
-★ Interstitial (text, picture, video)
+★ Interstitial (text, picture, video)(Admob, ChartBoost)
 
-★ Reward Video
+★ Reward Video(Admob, Unity, Vungle, ChartBoost)
 
 # SUPPORTED AD NETWORKS(more comming soon): 
-★ AdMob
+★ AdMob(Banner, Interstitial, Rewarded Video)
 
-★ Vungle
+★ Vungle(Rewarded Video)
 
-★ ChartBoost
+★ ChartBoost(Interstitial, Rewarded Video)
 
-★ Unity
+★ Unity(Rewarded Video)
 
 # Install
 
