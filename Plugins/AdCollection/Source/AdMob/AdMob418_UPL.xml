@@ -12,9 +12,9 @@
 		<!-- get packaging for Admob from ini and reset it if architecture not supported -->
 		<setBoolFromProperty result="bEnabled" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="bAndroidEnabled" default="false"/>
 		<setStringFromProperty result="AppId" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="AndroidAppId" default="0"/>
-    <setStringFromProperty result="BannerAdUnit" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="AndroidBannerUnit" default="0"/>
-    <setStringFromProperty result="InterstitialAdUnit" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="AndroidInterstitialUnit" default="0"/>
-    <setStringFromProperty result="RewardedVideoAdUnit" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="AndroidRewardedVideoAdUnit" default="0"/>
+		<setStringFromProperty result="BannerAdUnit" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="AndroidBannerUnit" default="0"/>
+		<setStringFromProperty result="InterstitialAdUnit" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="AndroidInterstitialUnit" default="0"/>
+		<setStringFromProperty result="RewardedVideoAdUnit" ini="Engine" section="/Script/AdCollectionEditor.AdMobSetting" property="AndroidRewardedVideoAdUnit" default="0"/>
 		<dumpvars/>
 	</init>
 	
@@ -44,6 +44,10 @@
   <!-- AAR dependencies -->
   <AARImports>
 
+    
+    <insertValue value="com.google.android.gms,play-services-ads,11.0.4"/>
+    <insertNewline/>
+      
   </AARImports>
 	
 

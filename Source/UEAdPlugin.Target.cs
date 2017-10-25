@@ -5,21 +5,10 @@ using System.Collections.Generic;
 
 public class UEAdPluginTarget : TargetRules
 {
-	public UEAdPluginTarget(TargetInfo Target)
+	public UEAdPluginTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
+		ExtraModuleNames.AddRange( new string[] { "UEAdPlugin" } );
 	}
 
-	//
-	// TargetRules interface.
-	//
-
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.AddRange( new string[] { "UEAdPlugin"} );
-	}
 }

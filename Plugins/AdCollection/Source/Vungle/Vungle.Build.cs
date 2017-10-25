@@ -9,7 +9,7 @@ using UnrealBuildTool;
 
 public class Vungle : ModuleRules
 {
-	public Vungle(TargetInfo Target)
+	public Vungle(ReadOnlyTargetRules Target) : base(Target)
 	{
 		
 		PublicIncludePaths.AddRange(
@@ -61,7 +61,7 @@ public class Vungle : ModuleRules
                 }
                 );
 
-            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, BuildConfiguration.RelativeEnginePath);
+            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
             AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "Vungle_UPL.xml")));
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)

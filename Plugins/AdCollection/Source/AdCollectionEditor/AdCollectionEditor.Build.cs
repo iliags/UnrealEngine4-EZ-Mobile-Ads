@@ -8,7 +8,7 @@ using UnrealBuildTool;
 
 public class AdCollectionEditor : ModuleRules
 {
-	public AdCollectionEditor(TargetInfo Target)
+	public AdCollectionEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
 		
 		PublicIncludePaths.AddRange(

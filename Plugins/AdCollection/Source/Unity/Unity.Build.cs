@@ -9,7 +9,7 @@ using UnrealBuildTool;
 
 public class Unity : ModuleRules
 {
-	public Unity(TargetInfo Target)
+	public Unity(ReadOnlyTargetRules Target) : base(Target)
 	{
 		
 		PublicIncludePaths.AddRange(
@@ -92,7 +92,7 @@ public class Unity : ModuleRules
                 }
                 );
 
-            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, BuildConfiguration.RelativeEnginePath);
+            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
             AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "Unity_UPL.xml")));
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
