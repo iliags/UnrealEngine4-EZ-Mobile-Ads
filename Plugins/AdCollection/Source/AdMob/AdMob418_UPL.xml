@@ -80,7 +80,7 @@
 
         <!-- Add permissions -->
 				<addPermission android:name="android.permission.INTERNET" />
-        <addPermission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+        <addPermission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
         <addPermission android:name="android.permission.ACCESS_NETWORK_STATE" />
 			</true>
 		</if>
