@@ -13,7 +13,6 @@
 UENUM(BlueprintType)		
 enum class EAdType : uint8
 {
-	Vungle 	UMETA(DisplayName = "Vungle"),  // the vungle ads type
 	AdMob 	UMETA(DisplayName = "AdMob"),	// the admob ads type
 	Unity 	UMETA(DisplayName = "Unity"),	// the unity ads type
 	ChartBoost 	UMETA(DisplayName = "ChartBoost")	// the chartboost ads type

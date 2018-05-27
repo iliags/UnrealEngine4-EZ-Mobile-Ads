@@ -20,11 +20,6 @@
       "LoadingPhase" : "PostConfigInit"
     },
     {
-      "Name": "Vungle",
-      "Type": "Runtime",
-      "LoadingPhase" : "PostConfigInit"
-    },
-    {
         "Name": "Unity",
         "Type": "Runtime",
         "LoadingPhase" : "PostConfigInit"
