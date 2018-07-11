@@ -145,6 +145,8 @@ bool FAdMobModule::IsRewardedVideoReady()
 
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jstring type, jint amount)
 {
+	const char* charsType = jenv->GetStringUTFChars(type, 0);
+	FString strHoldType = FString(UTF8_TO_TCHAR(charsType));
 
 	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
@@ -160,8 +162,8 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_n
 		FRewardedStatus status;
 		status.AdType = EAdType::AdMob;
 
-		const char* charsType = jenv->GetStringUTFChars(type, 0);
-		status.AdMobItem.Type = FString(UTF8_TO_TCHAR(charsType));
+		
+		status.AdMobItem.Type = strHoldType;
 		status.AdMobItem.Amount = (int)amount;
 
 		pModule->TriggerPlayRewardCompleteDelegates(status);

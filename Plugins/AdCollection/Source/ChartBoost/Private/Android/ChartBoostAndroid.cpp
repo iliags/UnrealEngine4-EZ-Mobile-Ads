@@ -88,7 +88,7 @@ bool FChartBoostModule::IsRewardedVideoReady()
 
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jint amount)
 {
-
+	
 	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
