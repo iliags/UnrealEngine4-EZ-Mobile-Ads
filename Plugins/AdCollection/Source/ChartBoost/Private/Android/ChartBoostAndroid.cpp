@@ -88,18 +88,28 @@ bool FChartBoostModule::IsRewardedVideoReady()
 
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jint amount)
 {
-	FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
-	if (pModule == nullptr)
+
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		return;
-	}
+		FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
 
-	FRewardedStatus status;
-	status.AdType = EAdType::ChartBoost;
+		FRewardedStatus status;
+		status.AdType = EAdType::ChartBoost;
 
-	status.ChartBoostReward = (int)amount;
+		status.ChartBoostReward = (int)amount;
 
-	pModule->TriggerPlayRewardCompleteDelegates(status);
+		pModule->TriggerPlayRewardCompleteDelegates(status);
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete),
+		nullptr,
+		ENamedThreads::GameThread
+		);
 }
 
 

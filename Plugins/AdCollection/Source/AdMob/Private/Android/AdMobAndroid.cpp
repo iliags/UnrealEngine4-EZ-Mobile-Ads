@@ -145,20 +145,31 @@ bool FAdMobModule::IsRewardedVideoReady()
 
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jstring type, jint amount)
 {
-	FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
-	if (pModule == nullptr)
+
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		return;
-	}
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativbe playrewarded completed\n") );
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
 
-	FRewardedStatus status;
-	status.AdType = EAdType::AdMob;
+		FRewardedStatus status;
+		status.AdType = EAdType::AdMob;
 
-	const char* charsType = jenv->GetStringUTFChars(type, 0);
-	status.AdMobItem.Type = FString(UTF8_TO_TCHAR(charsType));
-	status.AdMobItem.Amount = (int)amount;
+		const char* charsType = jenv->GetStringUTFChars(type, 0);
+		status.AdMobItem.Type = FString(UTF8_TO_TCHAR(charsType));
+		status.AdMobItem.Amount = (int)amount;
 
-	pModule->TriggerPlayRewardCompleteDelegates(status);
+		pModule->TriggerPlayRewardCompleteDelegates(status);
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete),
+		nullptr,
+		ENamedThreads::GameThread
+		);
 }
 
 void FAdMobModule::StartupModule()

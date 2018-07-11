@@ -55,17 +55,27 @@ bool FUnityModule::IsRewardedVideoReady()
 
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Unity_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz)
 {
-	FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity"));
-	if (pModule == nullptr)
+
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		return;
-	}
+		FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
 
-	FRewardedStatus status;
-	status.AdType = EAdType::Unity;
+		FRewardedStatus status;
+		status.AdType = EAdType::Unity;
 
-	UE_LOG(AdCollection, Log, TEXT("AndroidThunkJava_Unity Reward Callback"));
-	pModule->TriggerPlayRewardCompleteDelegates(status);
+		UE_LOG(AdCollection, Log, TEXT("AndroidThunkJava_Unity Reward Callback"));
+		pModule->TriggerPlayRewardCompleteDelegates(status);
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete),
+		nullptr,
+		ENamedThreads::GameThread
+		);
 }
 
 
