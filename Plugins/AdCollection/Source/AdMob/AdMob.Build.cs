@@ -129,6 +129,10 @@ public class AdMob : ModuleRules
             {
                 AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdMob418_UPL.xml")));
             }
+            else if(EngineMinorVersion == "20")
+            {
+                AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdMob420_UPL.xml")));
+            }
             else
             {
                 AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdMob_UPL.xml")));

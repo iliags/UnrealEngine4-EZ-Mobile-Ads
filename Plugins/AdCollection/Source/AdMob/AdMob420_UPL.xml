@@ -27,6 +27,7 @@
 		<if condition="bEnabled">
 			<true>
 				<log text="Copying Admob Java files to staging"/>
+        <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/gradle/app/build.gradle" dst="$S(BuildDir)/gradle/app/build.gradle"/>
 				<copyDir src="$S(PluginDir)../ThirdParty/ThirdParty/Android/Java"
 					dst = "$S(BuildDir)/src/com/epicgames/ue4" />
 			</true>
@@ -43,7 +44,7 @@
 
   <!-- AAR dependencies -->
   <AARImports>
-    <insertValue value="com.google.android.gms,play-services-ads,11.0.4"/>
+    <insertValue value="com.google.android.gms,play-services-ads,11.8.0"/>
     <insertNewline/>
   </AARImports>
 	
