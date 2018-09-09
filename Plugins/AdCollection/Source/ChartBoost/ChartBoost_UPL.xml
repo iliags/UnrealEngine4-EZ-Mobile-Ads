@@ -37,12 +37,12 @@
 
         <setElement result="AppIdMetadata" value="meta-data"/>
         <addAttribute tag="$AppIdMetadata" name="android:name" value="com.epicgames.ue4.ChartBoost.AppId"/>
-        <addAttribute tag="$AppIdMetadata" name="android:value" value="\ $S(AppId)"/>
+        <addAttribute tag="$AppIdMetadata" name="android:value" value="string/$S(AppId)"/>
         <addElement tag="application" name="AppIdMetadata"/>
 
         <setElement result="AppSignatureMetadata" value="meta-data"/>
         <addAttribute tag="$AppSignatureMetadata" name="android:name" value="com.epicgames.ue4.ChartBoost.Signature"/>
-        <addAttribute tag="$AppSignatureMetadata" name="android:value" value="\ $S(Signature)"/>
+        <addAttribute tag="$AppSignatureMetadata" name="android:value" value="$S(Signature)"/>
         <addElement tag="application" name="AppSignatureMetadata"/>
 
 
@@ -156,7 +156,9 @@
           try
           {
           Log.debug("ChartBoost:Ready Create!");
-          final String app_id = _bundle.getString("com.epicgames.ue4.ChartBoost.AppId");
+          String app_id = _bundle.getString("com.epicgames.ue4.ChartBoost.AppId");
+          app_id = app_id.replace("string/", "");
+          
           final String app_signature = _bundle.getString("com.epicgames.ue4.ChartBoost.Signature");
           chartBoostInstance = new ChartBoost(this, app_id, app_signature);
 

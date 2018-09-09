@@ -12,13 +12,13 @@ public class AdCollection : ModuleRules
 	public AdCollection(ReadOnlyTargetRules Target) : base(Target)
 	{
 		
-		PublicIncludePaths.AddRange(
+		/*PublicIncludePaths.AddRange(
 			new string[] {
 				"AdCollection/Public"
 				
 				// ... add public include paths required here ...
 			}
-			);
+			);*/
 				
 		
 		PrivateIncludePaths.AddRange(

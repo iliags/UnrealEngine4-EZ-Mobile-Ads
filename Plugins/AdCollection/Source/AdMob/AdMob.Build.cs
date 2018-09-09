@@ -39,13 +39,13 @@ public class AdMob : ModuleRules
         Definitions.Add(string.Format("ENGINE_MINOR_VERSION={0}", EngineMinorVersion));
         Definitions.Add(string.Format("ENGINE_PATCH_VERSION={0}", EnginePatchVersion));*/
 
-        PublicIncludePaths.AddRange(
+        /*PublicIncludePaths.AddRange(
 			new string[] {
 				"AdMob/Public"
 				
 				// ... add public include paths required here ...
 			}
-			);
+			);*/
 
         PublicDependencyModuleNames.AddRange(
 			new string[]
@@ -82,7 +82,7 @@ public class AdMob : ModuleRules
 
         if (Target.Platform == UnrealTargetPlatform.IOS)
         {
-            PrivateIncludePaths.Add("Private/IOS");
+            //PrivateIncludePaths.Add("Private/IOS");
 
             PublicAdditionalFrameworks.Add(
             new UEBuildFramework(
@@ -116,7 +116,7 @@ public class AdMob : ModuleRules
         }
         else if (Target.Platform == UnrealTargetPlatform.Android)
         {
-            PrivateIncludePaths.Add("Private/Android");
+            //PrivateIncludePaths.Add("Private/Android");
             PrivateDependencyModuleNames.AddRange(
                 new string[] {
                 "Launch",
@@ -140,11 +140,11 @@ public class AdMob : ModuleRules
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {
-            PrivateIncludePaths.Add("Private/Windows");
+            //PrivateIncludePaths.Add("Private/Windows");
         }
         else if(Target.Platform == UnrealTargetPlatform.Mac)
         {
-            PrivateIncludePaths.Add("Private/Mac");
+            //PrivateIncludePaths.Add("Private/Mac");
         }
         else
         {

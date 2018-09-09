@@ -12,13 +12,13 @@ public class Unity : ModuleRules
 	public Unity(ReadOnlyTargetRules Target) : base(Target)
 	{
 		
-		PublicIncludePaths.AddRange(
+		/*PublicIncludePaths.AddRange(
 			new string[] {
 				"Unity/Public"
 				
 				// ... add public include paths required here ...
 			}
-			);
+			);*/
 
         PublicDependencyModuleNames.AddRange(
 			new string[]
@@ -54,7 +54,7 @@ public class Unity : ModuleRules
 
         if (Target.Platform == UnrealTargetPlatform.IOS)
         {
-            PrivateIncludePaths.Add("Private/IOS");
+            //PrivateIncludePaths.Add("Private/IOS");
             PublicAdditionalFrameworks.Add(
                 new UEBuildFramework(
                 "UnityAds",														// Framework name
@@ -85,7 +85,7 @@ public class Unity : ModuleRules
         }
         else if (Target.Platform == UnrealTargetPlatform.Android)
         {
-            PrivateIncludePaths.Add("Private/Android");
+            //PrivateIncludePaths.Add("Private/Android");
             PrivateDependencyModuleNames.AddRange(
                 new string[] {
                 "Launch",
@@ -97,11 +97,11 @@ public class Unity : ModuleRules
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {
-            PrivateIncludePaths.Add("Private/Windows");
+            //PrivateIncludePaths.Add("Private/Windows");
         }
         else if(Target.Platform == UnrealTargetPlatform.Mac)
         {
-            PrivateIncludePaths.Add("Private/Mac");
+            //PrivateIncludePaths.Add("Private/Mac");
         }
         else
         {

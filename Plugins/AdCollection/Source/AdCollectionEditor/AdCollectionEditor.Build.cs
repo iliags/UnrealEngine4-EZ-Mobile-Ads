@@ -11,7 +11,7 @@ public class AdCollectionEditor : ModuleRules
 	public AdCollectionEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
 		
-		PublicIncludePaths.AddRange(
+		/*PublicIncludePaths.AddRange(
 			new string[] {
 				"AdCollectionEditor/Public"
 				// ... add public include paths required here ...
@@ -24,7 +24,7 @@ public class AdCollectionEditor : ModuleRules
 				"AdCollectionEditor/Private",
 				// ... add other private include paths required here ...
 			}
-			);
+			);*/
 			
 		
 		PublicDependencyModuleNames.AddRange(
