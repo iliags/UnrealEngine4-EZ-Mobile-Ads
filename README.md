@@ -26,7 +26,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 ★ IOS
 
 # AD TYPES:
-★ Banner(Admob)
+★ Banner(Admob,Facebook)
 
 ★ Interstitial (text, picture, video)(Admob, ChartBoost,Facebook)
 
