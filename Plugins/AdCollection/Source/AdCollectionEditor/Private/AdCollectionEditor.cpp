@@ -12,6 +12,7 @@
 #include "AdMobSetting.h"
 #include "UnitySetting.h"
 #include "ChartBoostSetting.h"
+#include "FacebookSetting.h"
 #include "ISettingsModule.h"
 
 #include "LevelEditor.h"
@@ -31,6 +32,12 @@ void FAdCollectionEditorModule::StartupModule()
 			LOCTEXT("AdMob", "AdMob"),
 			LOCTEXT("AdMob", "Settings for AdMob"),
 			GetMutableDefault<UAdMobSetting>()
+		);
+
+		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("Facebook"),
+			LOCTEXT("Facebook", "Facebook"),
+			LOCTEXT("Facebook", "Settings for Facebook"),
+			GetMutableDefault<UFacebookSetting>()
 		);
 
 		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("Unity"),

@@ -35,6 +35,12 @@
         "Type": "Runtime",
         "LoadingPhase" : "PostConfigInit"
     },
+	
+	{
+        "Name": "Facebook",
+        "Type": "Runtime",
+        "LoadingPhase" : "PostConfigInit"
+    },
 
     {
       "Name": "AdCollectionEditor",

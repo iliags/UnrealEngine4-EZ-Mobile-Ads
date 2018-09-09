@@ -15,7 +15,8 @@ enum class EAdType : uint8
 {
 	AdMob 	UMETA(DisplayName = "AdMob"),	// the admob ads type
 	Unity 	UMETA(DisplayName = "Unity"),	// the unity ads type
-	ChartBoost 	UMETA(DisplayName = "ChartBoost")	// the chartboost ads type
+	ChartBoost 	UMETA(DisplayName = "ChartBoost"),	// the chartboost ads type
+	Facebook  UMETA(DisplayName = "Facebook")
 };
 
 
