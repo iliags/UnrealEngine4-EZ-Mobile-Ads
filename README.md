@@ -26,11 +26,11 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 ★ IOS
 
 # AD TYPES:
-★ Banner(Admob,Facebook)
+★ Banner(Admob,Facebook Audience)
 
-★ Interstitial (text, picture, video)(Admob, ChartBoost,Facebook)
+★ Interstitial (text, picture, video)(Admob, ChartBoost,Facebook Audience)
 
-★ Reward Video(Admob, Unity, ChartBoost,Facebook)
+★ Reward Video(Admob, Unity, ChartBoost,Facebook Audience )
 
 # SUPPORTED AD NETWORKS(more comming soon): 
 ★ AdMob(Banner, Interstitial, Rewarded Video)
@@ -39,7 +39,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 
 ★ Unity(Rewarded Video)
 
-★ Facebook(Only support android)(Banner, Interstitial, Rewarded Video)
+★ Facebook Audience(Only support android)(Banner, Interstitial, Rewarded Video)
 
 
 # Install
