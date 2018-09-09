@@ -8,7 +8,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
  
 
 # FEATURES: 
-★ 3 best game ad networks supported (more coming soon).
+★ 4 best game ad networks supported (more coming soon).
 
 ★  all ad  networks  can enable and disable in editor setting.
 
@@ -28,9 +28,9 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 # AD TYPES:
 ★ Banner(Admob)
 
-★ Interstitial (text, picture, video)(Admob, ChartBoost)
+★ Interstitial (text, picture, video)(Admob, ChartBoost,Facebook)
 
-★ Reward Video(Admob, Unity, ChartBoost)
+★ Reward Video(Admob, Unity, ChartBoost,Facebook)
 
 # SUPPORTED AD NETWORKS(more comming soon): 
 ★ AdMob(Banner, Interstitial, Rewarded Video)
@@ -38,6 +38,9 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 ★ ChartBoost(Interstitial, Rewarded Video)
 
 ★ Unity(Rewarded Video)
+
+★ Facebook(Only support android)(Banner, Interstitial, Rewarded Video)
+
 
 # Install
 
