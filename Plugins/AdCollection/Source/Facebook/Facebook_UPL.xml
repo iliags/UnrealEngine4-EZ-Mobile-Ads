@@ -30,14 +30,12 @@
 
   <!-- AAR dependencies -->
   <AARImports>
-    <if condition="bEnabled">
-      <true>
+    
         <insertValue value="repository $S(PluginDir)../ThirdParty/ThirdParty/Android/libs"/>
         <insertNewline/>
         <insertValue value="com.facebook.android,audience-network-sdk,4.99.1"/>
         <insertNewline/>
-      </true>
-    </if>
+      
   </AARImports>
 	
 
