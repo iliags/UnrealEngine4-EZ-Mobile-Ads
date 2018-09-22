@@ -90,4 +90,5 @@ tasks.whenTaskAdded { task ->
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 	implementation fileTree(dir: 'src/main/libs', include: ['*.jar'])
+	implementation fileTree(dir: 'src/main/externlibs', include: ['*.jar'])
 }

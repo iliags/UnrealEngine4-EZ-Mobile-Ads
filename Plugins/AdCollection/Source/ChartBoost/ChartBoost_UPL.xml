@@ -160,7 +160,7 @@
           app_id = app_id.replace("string/", "");
           
           final String app_signature = _bundle.getString("com.epicgames.ue4.ChartBoost.Signature");
-          chartBoostInstance = new ChartBoost(this, app_id, app_signature);
+          chartBoostInstance = new ChartBoost(this, app_id, app_signature, false);
 
 
           Log.debug("ChartBoost:InitFinish:" + app_id);

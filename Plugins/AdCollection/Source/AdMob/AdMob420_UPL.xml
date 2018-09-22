@@ -24,22 +24,7 @@
 	
 	<!-- Files to copy before the build so they can be used in the build -->
 	<prebuildCopies>
-		<if condition="bEnabled">
-			<true>
-				<log text="Copying Admob Java files to staging"/>
-        <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/gradle/app/build.gradle" dst="$S(BuildDir)/gradle/app/build.gradle"/>
-				<copyDir src="$S(PluginDir)../ThirdParty/ThirdParty/Android/Java"
-					dst = "$S(BuildDir)/src/com/epicgames/ue4" />
-			</true>
-		</if>
-
-    <if condition="bEnabled">
-      <true>
-        <log text="Copying Admob Libs files to staging"/>
-        <copyDir src="$S(PluginDir)../ThirdParty/ThirdParty/Android/libs"
-					dst = "$S(BuildDir)/libs" />
-      </true>
-    </if>
+		
 	</prebuildCopies>
 
   <!-- AAR dependencies -->
@@ -198,7 +183,7 @@
           try
           {
           Log.debug("AdMob:Ready Create!");
-          adMobInstance = new AdMob(this, activityLayout);
+          adMobInstance = new AdMob(this, activityLayout, false);
 
           final String app_id = _bundle.getString("com.epicgames.ue4.AdMob.AppId");
           final String adBannerUnit = _bundle.getString("com.epicgames.ue4.AdMob.BannerAdUnit");

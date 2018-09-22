@@ -31,8 +31,7 @@
   <!-- AAR dependencies -->
   <AARImports>
     
-        <insertValue value="repository $S(PluginDir)../ThirdParty/ThirdParty/Android/libs"/>
-        <insertNewline/>
+        
         <insertValue value="com.facebook.android,audience-network-sdk,4.99.1"/>
         <insertNewline/>
       
@@ -186,7 +185,7 @@
           try
           {
           Log.debug("Facebook:Ready Create!");
-          facebookInstance = new Facebook(this, activityLayout);
+          facebookInstance = new Facebook(this, activityLayout, false);
 
           
           final String adBannerUnit = _bundle.getString("com.epicgames.ue4.Facebook.BannerAdUnit");
