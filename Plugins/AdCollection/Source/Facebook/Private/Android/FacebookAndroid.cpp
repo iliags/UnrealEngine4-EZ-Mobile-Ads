@@ -143,11 +143,8 @@ bool FFacebookModule::IsRewardedVideoReady()
 }
 
 
-__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Facebook_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jstring type, jint amount)
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Facebook_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz)
 {
-	const char* charsType = jenv->GetStringUTFChars(type, 0);
-	FString strHoldType = FString(UTF8_TO_TCHAR(charsType));
-
 	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()

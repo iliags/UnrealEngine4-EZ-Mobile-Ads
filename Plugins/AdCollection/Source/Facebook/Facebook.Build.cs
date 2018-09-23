@@ -94,6 +94,35 @@ public class Facebook : ModuleRules
             
             AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "Facebook_UPL.xml")));
         }
+        else if (Target.Platform == UnrealTargetPlatform.IOS)
+        {
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "FBAudienceNetwork",														// Framework name
+            "../ThirdParty/ThirdPartyFrameworks/FBAudienceNetwork.embeddedframework.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "AdsUtil",														// Framework name
+            "../ThirdParty/ThirdPartyFrameworks/AdsUtil.embeddedframework.zip")
+            );
+
+
+            PublicFrameworks.AddRange(
+            new string[]
+            {
+            "EventKit",
+            "MediaPlayer",
+            "AdSupport",
+            "CoreLocation",
+            "SystemConfiguration",
+            "MessageUI",
+            "Security",
+            "CoreTelephony"
+            }
+            );
+        }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {
             //PrivateIncludePaths.Add("Private/Windows");

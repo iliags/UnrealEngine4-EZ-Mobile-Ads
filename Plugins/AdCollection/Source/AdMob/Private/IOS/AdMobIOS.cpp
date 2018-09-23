@@ -7,6 +7,7 @@
 #include "AdMob.h"
 #include "IOSAppDelegate.h"
 #import <AdsUtil/AdsUtil.h>
+#include "Async/TaskGraphInterfaces.h"
 
 void FAdMobModule::ShowBanner(enAdsBannerPos pos)
 {
@@ -77,19 +78,28 @@ bool FAdMobModule::IsRewardedVideoReady()
 
 static void IOS_AdMobPlayComplete(NSString* type, int amount)
 {
-    FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob") );
-	if (pModule == nullptr)
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		return;
-	}
-    
-    FRewardedStatus status;
-    status.AdType = EAdType::AdMob;
-    
-    status.AdMobItem.Type = UTF8_TO_TCHAR([type cStringUsingEncoding:NSUTF8StringEncoding]);
-    status.AdMobItem.Amount = (int)amount;
-    
-    pModule->TriggerPlayRewardCompleteDelegates(status);
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		FRewardedStatus status;
+		status.AdType = EAdType::AdMob;
+
+		status.AdMobItem.Type = UTF8_TO_TCHAR([type cStringUsingEncoding : NSUTF8StringEncoding]);
+		status.AdMobItem.Amount = (int)amount;
+
+		pModule->TriggerPlayRewardCompleteDelegates(status);
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete),
+		nullptr,
+		ENamedThreads::GameThread
+		);
 }
 
 void FAdMobModule::StartupModule()

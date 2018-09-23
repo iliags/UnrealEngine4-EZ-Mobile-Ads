@@ -22,16 +22,29 @@ class UFacebookSetting : public UObject
 	bool bAndroidEnabled;
 
 	// the banner adunit
-	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android Banner AdUnit"))
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android Banner Placement"))
 	FString AndroidBannerUnit;
 
 	// the interstitial adunit
-	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android Interstitial AdUnit"))
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android Interstitial Placement"))
 	FString AndroidInterstitialUnit;
 
 	// the rewardedvideo adunit
-	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android RewardVideo AdUnit"))
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android RewardVideo Placement"))
 	FString AndroidRewardedVideoAdUnit;
+
+
+	UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "If Facebook IOS Enable"))
+	bool bIOSEnabled;
+
+	UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS Banner Placement"))
+	FString IOSBannerUnit;
+
+	UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS Interstitial Placement"))
+	FString IOSInterstitialUnit;
+
+	UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS RewardVideo Placement"))
+	FString IOSRewardedVideoAdUnit;
     
 	
 #if WITH_EDITOR

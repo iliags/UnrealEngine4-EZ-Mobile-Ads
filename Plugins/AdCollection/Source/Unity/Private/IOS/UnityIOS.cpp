@@ -7,6 +7,7 @@
 #include "Unity.h"
 #include "IOSAppDelegate.h"
 #import <AdsUtil/AdsUtil.h>
+#include "Async/TaskGraphInterfaces.h"
 
 void FUnityModule::PlayRewardedVideo()
 {
@@ -29,16 +30,25 @@ bool FUnityModule::IsRewardedVideoReady()
 
 static void IOS_UnityPlayComplete()
 {
-    FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity") );
-	if (pModule == nullptr)
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		return;
-	}
-    
-    FRewardedStatus status;
-    status.AdType = EAdType::Unity;
-    
-    pModule->TriggerPlayRewardCompleteDelegates(status);
+		FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		FRewardedStatus status;
+		status.AdType = EAdType::Unity;
+
+		pModule->TriggerPlayRewardCompleteDelegates(status);
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete),
+		nullptr,
+		ENamedThreads::GameThread
+		);
 }
 
 
