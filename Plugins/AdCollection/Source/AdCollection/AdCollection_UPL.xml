@@ -68,7 +68,7 @@
       *;
       }
       -dontwarn com.unity3d.ads.**
-
+      -dontwarn java.lang.invoke.**
       -dontwarn com.vungle.**
       -dontnote com.vungle.**
       -keep class com.vungle.** { *; }
