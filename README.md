@@ -61,7 +61,7 @@ Watch this video to learn how to use the plugin
   
 1.Copy Plugins folder to your project and compile the editor.
 
-2.if you package for android, change the minsdk version to 15.
+2.if you package for android, change the mininum sdk version to 15.
 
 3.Want Unity Ads? easy!!
       open project editor and find Unity Setting,  fill your application id for both Android and IOS.
