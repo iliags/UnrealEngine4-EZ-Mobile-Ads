@@ -59,17 +59,19 @@ Watch this video to learn how to use the plugin
 # Usage
   you can simply run the demo project for test, to integrates your own project, juse few steps:
   
-1、Copy Plugins folder to your project and compile the editor.
+1.Copy Plugins folder to your project and compile the editor.
 
-2、Want Unity Ads? easy!!
+2.if you package for android, change the minsdk version to 15.
+
+3.Want Unity Ads? easy!!
       open project editor and find Unity Setting,  fill your application id for both Android and IOS.
       ![ScreenShot](docs/config.PNG)
       
-3、In blueprint Editor, when you want show show the ads, just call function "PlayRewardedVideo",  setting the ad platform Unity . 
+4.In blueprint Editor, when you want show show the ads, just call function "PlayRewardedVideo",  setting the ad platform Unity . 
        you can add custom event to process after user complete watched the ads video.
 	![ScreenShot](docs/call.PNG)
 	
-4、Important:Remember that admob rewarded video  does not have fill rate on adnroid in most region, this is not a bug, so I suggest people switch to this plugin
+5.Important:Remember that admob rewarded video  does not have fill rate on adnroid in most region, this is not a bug, so I suggest people switch to this plugin
  advance version: https://github.com/feixuwu/UnrealEngine4-Admob, try both have same API, it support admob mediation, 
  so you can add thirdparty ad network dynamic on the google admob webpage.
  
