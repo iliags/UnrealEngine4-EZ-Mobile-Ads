@@ -142,6 +142,90 @@ bool FAdMobModule::IsRewardedVideoReady()
 	return false;
 }
 
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativeInterstitialClick(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_AdMob_nativeInterstitialClick"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativeInterstitialClick, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClick\n"));
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClickDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativeInterstitialClick),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativeInterstitialShow(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_AdMob_nativeInterstitialShow"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativeInterstitialShow, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialShow\n"));
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialShowDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativeInterstitialShow),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativeInterstitialClose(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_AdMob_nativeInterstitialClose"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativeInterstitialClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClose\n"));
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativeInterstitialClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativePlayRewardedClose(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_AdMob_nativePlayRewardedClose"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativePlayRewardedClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativePlayRewardedClose\n"));
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerPlayRewardClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_AdMob_nativePlayRewardedClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
 
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jstring type, jint amount)
 {

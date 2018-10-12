@@ -10,7 +10,7 @@
 
 
 UPlayRewardVideoCallbackProxy::UPlayRewardVideoCallbackProxy() :
-	Delegate(FPlayRewardCompleteDelegate::CreateUObject(this, &ThisClass::OnComplete))
+	Delegate(FPlayRewardCompleteDelegate::CreateUObject(this, &ThisClass::OnComplete)), CloseDelegate(FPlayRewardClosedDelegate::CreateUObject(this, &ThisClass::OnClosedCallback) )
 {
 }
 
@@ -69,6 +69,19 @@ void UPlayRewardVideoCallbackProxy::OnComplete(FRewardedStatus Status)
 	Module->ClearPlayRewardCompleteDelegate_Handle(DelegateHandle);
 }
 
+void UPlayRewardVideoCallbackProxy::OnClosedCallback()
+{
+	IAdModuleInterface* Module = FindAdsModule(AdType);
+	if (Module == nullptr)
+	{
+		return;
+	}
+
+	OnClosed.Broadcast();
+
+	Module->ClearPlayRewardClosedDelegate_Handle(CloseDelegateHandle);
+}
+
 void UPlayRewardVideoCallbackProxy::Activate()
 {
 	IAdModuleInterface* Module = FindAdsModule(AdType);
@@ -76,6 +89,10 @@ void UPlayRewardVideoCallbackProxy::Activate()
 	{
 		Module->ClearAllPlayRewardCompleteDelegate_Handle();
 		DelegateHandle = Module->AddPlayRewardCompleteDelegate_Handle(Delegate);
+
+		Module->ClearAllPlayRewardClosedDelegate_Handle();
+		CloseDelegateHandle = Module->AddPlayRewardClosedDelegate_Handle(CloseDelegate);
+
 		Module->PlayRewardedVideo();
 	}
 }

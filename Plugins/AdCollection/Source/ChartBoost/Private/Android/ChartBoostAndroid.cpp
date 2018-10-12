@@ -86,6 +86,93 @@ bool FChartBoostModule::IsRewardedVideoReady()
 	return false;
 }
 
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativeInterstitialClick(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_ChartBoost_nativeInterstitialClick"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativeInterstitialClick, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClick\n"));
+		FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClickDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativeInterstitialClick),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativeInterstitialShow(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_ChartBoost_nativeInterstitialShow"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativeInterstitialShow, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialShow\n"));
+		FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialShowDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativeInterstitialShow),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativeInterstitialClose(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_ChartBoost_nativeInterstitialClose"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativeInterstitialClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClose\n"));
+		FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativeInterstitialClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativePlayRewardedClose(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_ChartBoost_nativePlayRewardedClose"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativePlayRewardedClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativePlayRewardedClose\n"));
+		FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerPlayRewardClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_ChartBoost_nativePlayRewardedClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jint amount)
 {
 	

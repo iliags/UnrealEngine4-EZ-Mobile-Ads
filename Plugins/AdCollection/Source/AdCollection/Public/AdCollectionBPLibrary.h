@@ -54,6 +54,10 @@ struct FRewardedStatus
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayRewardedDelegate, FRewardedStatus, RewardStatus);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicRewardedClosedDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicInterstitialShowDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicInterstitialClickDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicInterstitialCloseDelegate);
 
 UCLASS()
 class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
@@ -85,8 +89,8 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 	* show interstitial ads
 	* @param	adType			the  ads type
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowInterstitial", Keywords = "AdCollection Show Interstitial Ads"), Category = "AdCollection")
-	static void ShowInterstitial(EAdType adType);
+	//UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowInterstitial", Keywords = "AdCollection Show Interstitial Ads"), Category = "AdCollection")
+	//static void ShowInterstitial(EAdType adType);
 
 	/**
 	* check is the banner is load finish

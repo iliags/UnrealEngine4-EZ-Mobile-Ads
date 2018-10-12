@@ -66,14 +66,14 @@ void UAdCollectionBPLibrary::ShowBanner(EAdType adType, bool isOnBottom)
 }
 
 
-void UAdCollectionBPLibrary::ShowInterstitial(EAdType adType)
+/*void UAdCollectionBPLibrary::ShowInterstitial(EAdType adType)
 {
 	IAdModuleInterface* Module = FindAdsModule(adType);
 	if (Module != NULL)
 	{
 		return Module->ShowInterstitialAd();
 	}
-}
+}*/
 
 
 void UAdCollectionBPLibrary::HideBanner(EAdType adType)

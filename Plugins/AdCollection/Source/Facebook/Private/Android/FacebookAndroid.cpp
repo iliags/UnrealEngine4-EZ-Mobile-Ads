@@ -142,6 +142,92 @@ bool FFacebookModule::IsRewardedVideoReady()
 	return false;
 }
 
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Facebook_nativeInterstitialClick(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_Facebook_nativeInterstitialClick"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativeInterstitialClick, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClick\n"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClickDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativeInterstitialClick),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Facebook_nativeInterstitialShow(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_Facebook_nativeInterstitialShow"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativeInterstitialShow, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialShow\n"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialShowDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativeInterstitialShow),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Facebook_nativeInterstitialClose(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_Facebook_nativeInterstitialClose"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativeInterstitialClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClose\n"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativeInterstitialClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Facebook_nativePlayRewardedClose(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_Facebook_nativePlayRewardedClose"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativePlayRewardedClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativePlayRewardedClose\n"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerPlayRewardClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Facebook_nativePlayRewardedClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
 
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Facebook_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz)
 {

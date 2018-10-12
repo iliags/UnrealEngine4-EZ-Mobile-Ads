@@ -53,6 +53,28 @@ bool FUnityModule::IsRewardedVideoReady()
 }
 
 
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Unity_nativePlayRewardedClose(JNIEnv* jenv, jobject thiz)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.Java_com_ads_util_Unity_nativePlayRewardedClose"), STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Unity_nativePlayRewardedClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativePlayRewardedClose\n"));
+		FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerPlayRewardClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_Java_com_ads_util_Unity_nativePlayRewardedClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+
 __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Unity_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz)
 {
 

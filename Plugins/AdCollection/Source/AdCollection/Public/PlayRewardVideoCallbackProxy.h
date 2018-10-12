@@ -29,6 +29,10 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FPlayRewardedDelegate OnSuccess;
 
+
+	UPROPERTY(BlueprintAssignable)
+	FDynamicRewardedClosedDelegate OnClosed;
+
 	/**
 	* play rewarded video ads
 	* @param	AdType		the type of the ads
@@ -55,5 +59,10 @@ private:
 	FPlayRewardCompleteDelegate Delegate;
 	FDelegateHandle DelegateHandle;
 
+	FPlayRewardClosedDelegate CloseDelegate;
+	FDelegateHandle CloseDelegateHandle;
+
+
 	void OnComplete(FRewardedStatus Status);
+	void OnClosedCallback();
 };

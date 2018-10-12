@@ -28,6 +28,22 @@ enum enAdsBannerPos
 DECLARE_MULTICAST_DELEGATE_OneParam(FPlayRewardComplete, FRewardedStatus);
 typedef FPlayRewardComplete::FDelegate FPlayRewardCompleteDelegate;
 
+DECLARE_MULTICAST_DELEGATE(FInterstitialShow);
+typedef FInterstitialShow::FDelegate FInterstitialShowDelegate;
+
+
+DECLARE_MULTICAST_DELEGATE(FInterstitialClick);
+typedef FInterstitialClick::FDelegate FInterstitialClickDelegate;
+
+
+DECLARE_MULTICAST_DELEGATE(FInterstitialClosed);
+typedef FInterstitialClosed::FDelegate FInterstitialClosedDelegate;
+
+
+DECLARE_MULTICAST_DELEGATE(FPlayRewardClosed);
+typedef FPlayRewardClosed::FDelegate FPlayRewardClosedDelegate;
+
+
 #define DEFINE_ADS_DELEGATE_BASE(DelegateName) \
 public: \
 	F##DelegateName DelegateName##Delegates; \
@@ -45,6 +61,14 @@ public: \
 	virtual void ClearAll##DelegateName##Delegate_Handle() \
 	{ \
 		DelegateName##Delegates.Clear(); \
+	}
+
+
+#define DEFINE_ADS_DELEGATE(DelegateName) \
+	DEFINE_ADS_DELEGATE_BASE(DelegateName) \
+	virtual void Trigger##DelegateName##Delegates() \
+	{ \
+		DelegateName##Delegates.Broadcast(); \
 	}
 
 
@@ -104,5 +128,13 @@ public:
 		return false;
 	}
 
+
+	DEFINE_ADS_DELEGATE(InterstitialShow);
+	DEFINE_ADS_DELEGATE(InterstitialClick);
+	DEFINE_ADS_DELEGATE(InterstitialClosed);
+	DEFINE_ADS_DELEGATE(PlayRewardClosed);
+	//DEFINE_ADS_DELEGATE(InterstitialClick);
+	//DEFINE_ADS_DELEGATE(InterstitialClosed);
+	//DEFINE_ADS_DELEGATE(PlayRewardClosed);
 	DEFINE_ADS_DELEGATE_ONE_PARAM(PlayRewardComplete, FRewardedStatus);
 };
