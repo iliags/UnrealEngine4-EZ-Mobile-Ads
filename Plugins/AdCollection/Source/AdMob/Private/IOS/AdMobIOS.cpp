@@ -102,6 +102,85 @@ static void IOS_AdMobPlayComplete(NSString* type, int amount)
 		);
 }
 
+static void IOS_AdmobRewardClose()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeRewardClose"), STAT_FSimpleDelegateGraphTask_nativeRewardClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+		
+		pModule->TriggerPlayRewardClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeRewardClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+static void IOS_AdmobInterstitialShow()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.interstitialShow"), STAT_FSimpleDelegateGraphTask_interstitialShow, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialShowDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_interstitialShow),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+static void IOS_AdmobInterstitialClick()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.interstitialClick"), STAT_FSimpleDelegateGraphTask_interstitialClick, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClickDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_interstitialClick),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+static void IOS_AdmobInterstitialClose()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.interstitialClose"), STAT_FSimpleDelegateGraphTask_interstitialClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_interstitialClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
 void FAdMobModule::StartupModule()
 {
     bool isEnable = false;
@@ -125,7 +204,10 @@ void FAdMobModule::StartupModule()
         UIViewController* curViewController = (UIViewController*)[IOSAppDelegate GetDelegate].IOSController;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[AdMobHelper GetDelegate] InitSDK:curViewController AppID:[NSString stringWithFString:appId] BannerUnit:[NSString stringWithFString:bannerUnit]  InterstitalUnit:[NSString stringWithFString:InterstitalUnit] RewardedUnit:[NSString stringWithFString:rewardedUnit] callback:&IOS_AdMobPlayComplete];
+            [[AdMobHelper GetDelegate] InitSDK:curViewController AppID:[NSString stringWithFString:appId] BannerUnit:[NSString stringWithFString:bannerUnit]  
+			InterstitalUnit:[NSString stringWithFString:InterstitalUnit] RewardedUnit:[NSString stringWithFString:rewardedUnit] 
+			callback:&IOS_AdMobPlayComplete rewardClose:&IOS_AdmobRewardClose  interstitialShow:&IOS_AdmobInterstitialShow 
+			interstitialClick:&IOS_AdmobInterstitialClick interstitialClose:IOS_AdmobInterstitialClose];
         });
     }
 }

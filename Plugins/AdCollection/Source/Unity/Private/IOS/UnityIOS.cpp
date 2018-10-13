@@ -51,6 +51,26 @@ static void IOS_UnityPlayComplete()
 		);
 }
 
+static void IOS_UnityRewardClose()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.RewardClose"), STAT_FSimpleDelegateGraphTask_RewardClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerPlayRewardClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_RewardClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
 
 void FUnityModule::StartupModule()
 {
@@ -64,7 +84,7 @@ void FUnityModule::StartupModule()
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[UnityHelper GetDelegate] InitSDK:[NSString stringWithFString:appId] callback:&IOS_UnityPlayComplete];
+            [[UnityHelper GetDelegate] InitSDK:[NSString stringWithFString:appId] callback:&IOS_UnityPlayComplete rewardClose:&IOS_UnityRewardClose];
         });
     }
 

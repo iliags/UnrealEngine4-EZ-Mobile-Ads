@@ -101,6 +101,85 @@ static void IOS_FacebookPlayComplete()
 		);
 }
 
+static void IOS_FacebookRewardClose()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.RewardClose"), STAT_FSimpleDelegateGraphTask_RewardClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerPlayRewardClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_RewardClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+static void IOS_FacebookInterstitialShow()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.interstitialShow"), STAT_FSimpleDelegateGraphTask_interstitialShow, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialShowDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_interstitialShow),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+static void IOS_FacebookInterstitialClick()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.interstitialClick"), STAT_FSimpleDelegateGraphTask_interstitialClick, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClickDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_interstitialClick),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
+static void IOS_FacebookInterstitialClose()
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.interstitialClose"), STAT_FSimpleDelegateGraphTask_interstitialClose, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+	{
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		if (pModule == nullptr)
+		{
+			return;
+		}
+
+		pModule->TriggerInterstitialClosedDelegates();
+	}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_interstitialClose),
+		nullptr,
+		ENamedThreads::GameThread
+		);
+}
+
 void FFacebookModule::StartupModule()
 {
 	bool isEnable = false;
@@ -121,7 +200,9 @@ void FFacebookModule::StartupModule()
 		UIViewController* curViewController = (UIViewController*)[IOSAppDelegate GetDelegate].IOSController;
 
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[[FacebookHelper GetDelegate] InitSDK:curViewController BannerUnit : [NSString stringWithFString : bannerUnit]  InterstitalUnit : [NSString stringWithFString : InterstitalUnit] RewardedUnit : [NSString stringWithFString : rewardedUnit] callback : &IOS_FacebookPlayComplete];
+			[[FacebookHelper GetDelegate] InitSDK:curViewController BannerUnit : [NSString stringWithFString : bannerUnit]  InterstitalUnit : [NSString stringWithFString : InterstitalUnit] RewardedUnit : [NSString stringWithFString : rewardedUnit] callback : &IOS_FacebookPlayComplete 
+			rewardClose : &IOS_FacebookRewardClose  interstitialShow : &IOS_FacebookInterstitialShow
+			interstitialClick : &IOS_FacebookInterstitialClick interstitialClose : IOS_FacebookInterstitialClose];
 			});
 	}
 
