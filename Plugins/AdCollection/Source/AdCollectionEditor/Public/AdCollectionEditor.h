@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "ModuleManager.h"
+#include "Modules/ModuleManager.h"
 
 class FToolBarBuilder;
 class FMenuBuilder;
