@@ -7,7 +7,7 @@
 using System.IO;
 using UnrealBuildTool;
 
-public class Facebook : ModuleRules
+public class FacebookAds : ModuleRules
 {
     private string EngineMajorVersion;
     private string EngineMinorVersion;
@@ -27,7 +27,7 @@ public class Facebook : ModuleRules
         return "";
     }
 
-    public Facebook(ReadOnlyTargetRules Target) : base(Target)
+    public FacebookAds(ReadOnlyTargetRules Target) : base(Target)
 	{
         string strEngineDir = GetEngineDirectory();
         string strEngineVersion = ReadEngineVersion(strEngineDir);

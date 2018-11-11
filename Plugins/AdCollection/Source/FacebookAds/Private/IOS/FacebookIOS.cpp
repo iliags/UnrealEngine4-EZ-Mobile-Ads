@@ -83,14 +83,14 @@ static void IOS_FacebookPlayComplete()
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
 		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativbe playrewarded completed\n"));
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
 		}
 
 		FRewardedStatus status;
-		status.AdType = EAdType::Facebook;
+		status.AdType = EAdType::FacebookAds;
 
 
 		pModule->TriggerPlayRewardCompleteDelegates(status);
@@ -107,7 +107,7 @@ static void IOS_FacebookRewardClose()
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
@@ -127,7 +127,7 @@ static void IOS_FacebookInterstitialShow()
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
@@ -146,7 +146,7 @@ static void IOS_FacebookInterstitialClick()
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
@@ -166,7 +166,7 @@ static void IOS_FacebookInterstitialClose()
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;

@@ -14,4 +14,4 @@
 
 #undef LOCTEXT_NAMESPACE
 
-IMPLEMENT_MODULE(FFacebookModule, Facebook)
+IMPLEMENT_MODULE(FFacebookModule, FacebookAds)

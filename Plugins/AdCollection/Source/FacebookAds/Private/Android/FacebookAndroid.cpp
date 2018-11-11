@@ -149,7 +149,7 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Faceboo
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
 		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClick\n"));
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
@@ -171,7 +171,7 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Faceboo
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
 		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialShow\n"));
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
@@ -193,7 +193,7 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Faceboo
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
 		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativeInterstitialClose\n"));
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
@@ -214,7 +214,7 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Faceboo
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
 		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativePlayRewardedClose\n"));
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
@@ -236,14 +236,14 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Faceboo
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 	{
 		FPlatformMisc::LowLevelOutputDebugStringf(TEXT("nativbe playrewarded completed\n") );
-		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("Facebook"));
+		FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
 		if (pModule == nullptr)
 		{
 			return;
 		}
 
 		FRewardedStatus status;
-		status.AdType = EAdType::Facebook;
+		status.AdType = EAdType::FacebookAds;
 
 
 		pModule->TriggerPlayRewardCompleteDelegates(status);
