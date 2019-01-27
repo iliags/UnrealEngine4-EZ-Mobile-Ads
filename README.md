@@ -102,6 +102,26 @@ You can use it free, and I will share 2% ads traffic.
   
 
 # FAQ
+## ★ Why My admob not show?
+  There's a lot of reasons why admob not show correctly,you can install the admob test apk from 
+  https://github.com/feixuwu/UnrealEngine4-EZ-Mobile-Ads/blob/master/AdmobHelpApk/AdmobTest.apk
+  this apk use google official test ad unit, if it works, then the admob is working and the plugin is working correct,
+  you may need check your admob account or wait some time to let ad unit active(if the ad unit is new created).
+  
+  here is the offical test ad unit which I copy from 
+  https://github.com/googleads/googleads-mobile-android-examples
+  
+  you can change the admob setting to use this test ad unit to check if the plugin works on your game.
+  
+  
+  appid:ca-app-pub-3940256099942544~3347511713
+  
+  banner:ca-app-pub-3940256099942544/6300978111
+  
+  interstitial:ca-app-pub-3940256099942544/1033173712
+  
+  rewarded video:ca-app-pub-3940256099942544/5224354917
+  
 
 ## ★ I'm not good with C++, can I use this plugin?
 
