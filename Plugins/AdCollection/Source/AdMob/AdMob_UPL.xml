@@ -183,7 +183,7 @@
           try
           {
           Log.debug("AdMob:Ready Create!");
-          adMobInstance = new AdMob(this, activityLayout, false);
+          adMobInstance = new AdMob(this, activityLayout, false, false);
 
           final String app_id = _bundle.getString("com.epicgames.ue4.AdMob.AppId");
           final String adBannerUnit = _bundle.getString("com.epicgames.ue4.AdMob.BannerAdUnit");

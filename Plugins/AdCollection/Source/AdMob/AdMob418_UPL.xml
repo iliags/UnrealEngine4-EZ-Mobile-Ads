@@ -31,7 +31,7 @@
   <AARImports>
 
     
-    <insertValue value="com.google.android.gms,play-services-ads,11.0.4"/>
+    insertValue value="com.google.android.gms,play-services-ads,11.0.4"/>
     <insertNewline/>
       
   </AARImports>

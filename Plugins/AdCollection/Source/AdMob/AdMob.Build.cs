@@ -125,11 +125,7 @@ public class AdMob : ModuleRules
 
             string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
 
-            if (EngineMinorVersion == "18")
-            {
-                AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdMob418_UPL.xml")));
-            }
-            else if(EngineMinorVersion == "20")
+            if(EngineMinorVersion == "20")
             {
                 AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdMob420_UPL.xml")));
             }
