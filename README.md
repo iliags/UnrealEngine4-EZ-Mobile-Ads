@@ -97,6 +97,9 @@ Watch this video to learn how to use the plugin
   Email:feixuwu@outlook.com
   Remote Assistance with teamviewer
   
+# License
+You can use it free, and I will share 2% ads traffic.
+  
 
 # FAQ
 
