@@ -108,6 +108,9 @@ You can use it free, and I will share 2% ads traffic.
   this apk use google official test ad unit, if it works, then the admob is working and the plugin is working correct,
   you may need check your admob account or wait some time to let ad unit active(if the ad unit is new created).
   
+  to show Admob rewarded video, your phone need have google service installed, some device removed all google service,then
+  the rewarded video may not show correct.
+  
   here is the offical test ad unit which I copy from 
   https://github.com/googleads/googleads-mobile-android-examples
   
