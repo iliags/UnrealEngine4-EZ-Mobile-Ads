@@ -25,6 +25,9 @@ class UUnitySetting : public UObject
 	// the android unity appid
 	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Unity Android AppID"))
 	FString AndroidAppId;
+
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Unity Android Placement"))
+	FString Placement;
     
     // if the ios unity ads enable
     UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "If Is Unity IOS Enable"))

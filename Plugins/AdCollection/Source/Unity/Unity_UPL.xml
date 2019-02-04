@@ -12,6 +12,7 @@
 		<!-- get packaging for Admob from ini and reset it if architecture not supported -->
 		<setBoolFromProperty result="bEnabled" ini="Engine" section="/Script/AdCollectionEditor.UnitySetting" property="bIsAndroidEnabled" default="false"/>
 		<setStringFromProperty result="AppId" ini="Engine" section="/Script/AdCollectionEditor.UnitySetting" property="AndroidAppId" default="0"/>
+    <setStringFromProperty result="Placement" ini="Engine" section="/Script/AdCollectionEditor.UnitySetting" property="Placement" default="0"/>
 		<dumpvars/>
 	</init>
 	
@@ -43,6 +44,11 @@
         <addAttribute tag="$AppIdMetadata" name="android:name" value="com.epicgames.ue4.Unity.AppId"/>
         <addAttribute tag="$AppIdMetadata" name="android:value" value="string/$S(AppId)"/>
         <addElement tag="application" name="AppIdMetadata"/>
+
+        <setElement result="PlacementMetadata" value="meta-data"/>
+        <addAttribute tag="$PlacementMetadata" name="android:name" value="com.epicgames.ue4.Unity.Placement"/>
+        <addAttribute tag="$PlacementMetadata" name="android:value" value="$S(Placement)"/>
+        <addElement tag="application" name="PlacementMetadata"/>
 
 
         <setElement result="AdUnitActivity" value="activity"/>
@@ -147,8 +153,9 @@
           {
           Log.debug("Unity:Ready Create!");
           String app_id = _bundle.getString("com.epicgames.ue4.Unity.AppId");
+          String placement = _bundle.getString("com.epicgames.ue4.Unity.Placement");
           app_id = app_id.replace("string/", "");
-          unityInstance = new Unity(this, app_id, false);
+          unityInstance = new Unity(this, app_id, placement, false, false);
 
 
           Log.debug("Unity:InitFinish:" + app_id);
