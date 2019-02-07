@@ -106,6 +106,15 @@
           // Begin Unity gameActivityClassAdditions
           private Unity unityInstance;
 
+          public void AndroidThunkJava_Unity_setCurrentPlacement(String placement)
+          {
+          if (unityInstance != null)
+          {
+          unityInstance.setCurrentPlacement(placement);
+          }
+          
+          }
+
           public void AndroidThunkJava_Unity_PlayRewardedVideo()
           {
           if (unityInstance != null)
@@ -120,7 +129,7 @@
           {
           return unityInstance.IsRewardedVideoReady();
           }
-          
+
           return false;
           }
 
