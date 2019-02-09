@@ -5,7 +5,7 @@
 #include "Android/AndroidApplication.h"
 #include "UnityBlueprintFunctionLibrary.h"
 
-DEFINE_LOG_CATEGORY_STATIC(AdCollection, Log, All);
+DEFINE_LOG_CATEGORY_STATIC(Unity, Log, All);
 
 void UUnityBlueprintFunctionLibrary::SetCurrentPlacement(FString Placement)
 {
@@ -16,7 +16,7 @@ void UUnityBlueprintFunctionLibrary::SetCurrentPlacement(FString Placement)
 
 		if (SetPlacementMethod == nullptr)
 		{
-			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_Unity_setCurrentPlacement not found"));
+			UE_LOG(Unity, Error, TEXT("AndroidThunkJava_Unity_setCurrentPlacement not found"));
 			return;
 		}
 
