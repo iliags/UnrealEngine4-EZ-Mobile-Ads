@@ -13,6 +13,9 @@ UCLASS()
 class UNITY_API UUnityBlueprintFunctionLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
+
+public:
+
 	
 	/**
 	* set current placement

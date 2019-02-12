@@ -64,6 +64,9 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
+public:
+
+
 	/**
 	* play rewardedvideo ads
 	* @param	adType			the ads type
