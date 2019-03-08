@@ -82,9 +82,11 @@ void FUnityModule::StartupModule()
         FString appId;
         GConfig->GetString(TEXT("/Script/AdCollectionEditor.UnitySetting"), TEXT("IOSAppId"), appId, GEngineIni);
         
+		FString placement;
+		GConfig->GetString(TEXT("/Script/AdCollectionEditor.UnitySetting"), TEXT("IOSPlacement"), placement, GEngineIni);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[UnityHelper GetDelegate] InitSDK:[NSString stringWithFString:appId] callback:&IOS_UnityPlayComplete rewardClose:&IOS_UnityRewardClose];
+            [[UnityHelper GetDelegate] InitSDK:[NSString stringWithFString:appId] placement: [NSString stringWithFString : placement] callback:&IOS_UnityPlayComplete rewardClose:&IOS_UnityRewardClose];
         });
     }
 

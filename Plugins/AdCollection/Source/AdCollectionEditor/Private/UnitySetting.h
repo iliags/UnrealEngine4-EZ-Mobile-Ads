@@ -37,6 +37,9 @@ class UUnitySetting : public UObject
     UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "Unity IOS AppID"))
     FString IOSAppId;
 
+	UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "Unity IOS Placement"))
+	FString IOSPlacement;
+
 
 #if WITH_EDITOR
 	// UObject interface
