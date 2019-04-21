@@ -116,7 +116,7 @@ You can use it free, and I will share 2% ads traffic.
   
   you can change the admob setting to use this test ad unit to check if the plugin works on your game.
   
-  
+  Android:
   appid:ca-app-pub-3940256099942544~3347511713
   
   banner:ca-app-pub-3940256099942544/6300978111
@@ -125,6 +125,19 @@ You can use it free, and I will share 2% ads traffic.
   
   rewarded video:ca-app-pub-3940256099942544/5224354917
   
+  IOS:
+  appid:ca-app-pub-3940256099942544~1458002511
+  
+  banner:ca-app-pub-3940256099942544/2934735716
+  
+  interstitial:ca-app-pub-3940256099942544/4411468910
+  
+  rewarded video:ca-app-pub-3940256099942544/1712485313
+  
+## ★ how to change placement in runtime for Unity ads?
+  
+  there's a blueprint function SetCurrentPlacement can set placement in runtime for unity ads.
+  after call SetCurrentPlacement, all the Unity ads's check and play function  will works on the new placement.
 
 ## ★ I'm not good with C++, can I use this plugin?
 
