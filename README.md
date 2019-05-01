@@ -15,7 +15,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 ★  extremely easy  integrates just one line c++ code or blueprint for both IOS and Android. plugin automatic process ads reload
   and other detail.
 
-★  supoort unreal engine 4 4.20 4.21.
+★  supoort unreal engine 4 4.21 4.22.
 
 ★ support via e-mail feixuwu@outlook.com
 
