@@ -11,7 +11,7 @@ public class ChartBoost : ModuleRules
 {
 	public ChartBoost(ReadOnlyTargetRules Target) : base(Target)
 	{
-		
+        PrivatePCHHeaderFile = "Public/ChartBoost.h";
 		/*PublicIncludePaths.AddRange(
 			new string[] {
 				"ChartBoost/Public"
@@ -101,7 +101,7 @@ public class ChartBoost : ModuleRules
                 );
 
             string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
-            AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "ChartBoost_UPL.xml")));
+            AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "ChartBoost_UPL.xml"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {

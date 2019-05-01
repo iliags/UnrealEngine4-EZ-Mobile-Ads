@@ -10,8 +10,9 @@ public class AdCollectionEditor : ModuleRules
 {
 	public AdCollectionEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
-		
-		/*PublicIncludePaths.AddRange(
+        PrivatePCHHeaderFile = "Public/AdCollectionEditor.h";
+
+        /*PublicIncludePaths.AddRange(
 			new string[] {
 				"AdCollectionEditor/Public"
 				// ... add public include paths required here ...
@@ -25,9 +26,9 @@ public class AdCollectionEditor : ModuleRules
 				// ... add other private include paths required here ...
 			}
 			);*/
-			
-		
-		PublicDependencyModuleNames.AddRange(
+
+
+        PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"Core",

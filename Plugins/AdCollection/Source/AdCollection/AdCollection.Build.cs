@@ -11,17 +11,18 @@ public class AdCollection : ModuleRules
 {
 	public AdCollection(ReadOnlyTargetRules Target) : base(Target)
 	{
-		
-		/*PublicIncludePaths.AddRange(
+        PrivatePCHHeaderFile = "Public/AdCollection.h";
+
+        /*PublicIncludePaths.AddRange(
 			new string[] {
 				"AdCollection/Public"
 				
 				// ... add public include paths required here ...
 			}
 			);*/
-				
-		
-		PrivateIncludePaths.AddRange(
+
+
+        PrivateIncludePaths.AddRange(
 			new string[] {
 				"AdCollection/Private",
 				
@@ -63,7 +64,7 @@ public class AdCollection : ModuleRules
         if (Target.Platform == UnrealTargetPlatform.Android)
         {
             string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
-            AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdCollection_UPL.xml")));
+            AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "AdCollection_UPL.xml"));
         }
     }
 }

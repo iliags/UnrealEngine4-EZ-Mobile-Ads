@@ -11,8 +11,9 @@ public class Unity : ModuleRules
 {
 	public Unity(ReadOnlyTargetRules Target) : base(Target)
 	{
-		
-		/*PublicIncludePaths.AddRange(
+        PrivatePCHHeaderFile = "Public/Unity.h";
+
+        /*PublicIncludePaths.AddRange(
 			new string[] {
 				"Unity/Public"
 				
@@ -93,7 +94,7 @@ public class Unity : ModuleRules
                 );
 
             string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
-            AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "Unity_UPL.xml")));
+            AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "Unity_UPL.xml"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {

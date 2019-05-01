@@ -16,11 +16,11 @@ public class FacebookAds : ModuleRules
     string GetEngineDirectory()
     {
         string magicKey = "UE_ENGINE_DIRECTORY=";
-        for(var i = 0; i < Definitions.Count; i++)
+        for(var i = 0; i < PublicDefinitions.Count; i++)
         {
-            if(Definitions[i].IndexOf(magicKey) >= 0)
+            if(PublicDefinitions[i].IndexOf(magicKey) >= 0)
             {
-                return Definitions[i].Substring(magicKey.Length + 1);
+                return PublicDefinitions[i].Substring(magicKey.Length + 1);
             }
         }
 
@@ -29,6 +29,7 @@ public class FacebookAds : ModuleRules
 
     public FacebookAds(ReadOnlyTargetRules Target) : base(Target)
 	{
+        PrivatePCHHeaderFile = "Public/Facebook.h";
         string strEngineDir = GetEngineDirectory();
         string strEngineVersion = ReadEngineVersion(strEngineDir);
 
@@ -92,7 +93,7 @@ public class FacebookAds : ModuleRules
             string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
 
             
-            AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "Facebook_UPL.xml")));
+            AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "Facebook_UPL.xml"));
         }
         else if (Target.Platform == UnrealTargetPlatform.IOS)
         {

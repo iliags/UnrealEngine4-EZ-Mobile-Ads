@@ -16,11 +16,11 @@ public class AdMob : ModuleRules
     string GetEngineDirectory()
     {
         string magicKey = "UE_ENGINE_DIRECTORY=";
-        for(var i = 0; i < Definitions.Count; i++)
+        for(var i = 0; i < PublicDefinitions.Count; i++)
         {
-            if(Definitions[i].IndexOf(magicKey) >= 0)
+            if(PublicDefinitions[i].IndexOf(magicKey) >= 0)
             {
-                return Definitions[i].Substring(magicKey.Length + 1);
+                return PublicDefinitions[i].Substring(magicKey.Length + 1);
             }
         }
 
@@ -29,6 +29,7 @@ public class AdMob : ModuleRules
 
     public AdMob(ReadOnlyTargetRules Target) : base(Target)
 	{
+        PrivatePCHHeaderFile = "Public/AdMob.h";
         string strEngineDir = GetEngineDirectory();
         string strEngineVersion = ReadEngineVersion(strEngineDir);
 
@@ -127,11 +128,11 @@ public class AdMob : ModuleRules
 
             if(EngineMinorVersion == "20")
             {
-                AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdMob420_UPL.xml")));
+                AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "AdMob420_UPL.xml"));
             }
             else
             {
-                AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdMob_UPL.xml")));
+                AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "AdMob_UPL.xml"));
             }  
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
