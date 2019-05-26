@@ -102,6 +102,13 @@ You can use it free, and I will share 2% ads traffic.
   
 
 # FAQ
+## ★ package IOS on mac fail
+  if u use remote build to package for ios, it should works fine.
+  but if u launch the engine on mac and package for ios, it will fail, this is a bug of UBT on mac,
+  the solution is run the command as root:
+  ln -s /Users/Shared/Epic\ Games/ /Users/Shared/EpicGames
+  
+
 ## ★ Why My admob not show?
   There's a lot of reasons why admob not show correctly,you can install the admob test apk from 
   https://github.com/feixuwu/UnrealEngine4-EZ-Mobile-Ads/blob/master/AdmobHelpApk/AdmobTest.apk
