@@ -22,12 +22,9 @@
   <resourceCopies>
 		
     <log text="Copying Admob Libs files to staging"/>
-
-    <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/gradle/app/build.gradle" dst="$S(BuildDir)/gradle/app/build.gradle"/>
     
-    <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs/chartboost.jar" dst = "$S(BuildDir)/gradle/app/src/main/externlibs/chartboost.jar" />
-
-    <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs/unity-classes.jar" dst = "$S(BuildDir)/gradle/app/src/main/externlibs/unity-classes.jar" />
+    <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs/chartboost.jar" dst = "$S(BuildDir)/libs/chartboost.jar" />
+    <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs/unity-classes.jar" dst = "$S(BuildDir)/libs/unity-classes.jar" />
 
    
 	</resourceCopies>
