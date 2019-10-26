@@ -78,6 +78,7 @@ bool FAdMobModule::IsRewardedVideoReady()
 
 static void IOS_AdMobPlayComplete(NSString* type, int amount)
 {
+	FString strType = UTF8_TO_TCHAR([type cStringUsingEncoding : NSUTF8StringEncoding]);
 	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
@@ -91,7 +92,7 @@ static void IOS_AdMobPlayComplete(NSString* type, int amount)
 		FRewardedStatus status;
 		status.AdType = EAdType::AdMob;
 
-		status.AdMobItem.Type = UTF8_TO_TCHAR([type cStringUsingEncoding : NSUTF8StringEncoding]);
+		status.AdMobItem.Type = strType;
 		status.AdMobItem.Amount = (int)amount;
 
 		pModule->TriggerPlayRewardCompleteDelegates(status);
