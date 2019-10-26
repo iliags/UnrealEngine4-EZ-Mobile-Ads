@@ -23,11 +23,39 @@
 		
     <log text="Copying Admob Libs files to staging"/>
     
+    <!-- 
     <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs/chartboost.jar" dst = "$S(BuildDir)/libs/chartboost.jar" />
     <copyFile src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs/unity-classes.jar" dst = "$S(BuildDir)/libs/unity-classes.jar" />
+    -->
 
    
 	</resourceCopies>
+
+  <gradleCopies>
+
+    <log text="Copying easyads files to staging"/>
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/sAndroid/libs" dst = "$S(BuildDir)/libs" />
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/libs" dst = "$S(BuildDir)/gradle/app/src/main/libs" />
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs" dst = "$S(BuildDir)/libs" />
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/externlibs" dst = "$S(BuildDir)/gradle/app/src/main/libs" />
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/Java"
+        dst = "$S(BuildDir)/src" />
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/Java"
+        dst = "$S(BuildDir)/gradle/app/src/main/java" />
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/permission_library"
+        dst="$S(BuildDir)/JavaLibs/permission_library" />
+
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/permission_library"
+        dst="$S(BuildDir)/gradle/permission_library" />
+
+  </gradleCopies>
 	
 	<!-- AAR dependencies -->
 	<AARImports>
@@ -37,6 +65,9 @@
 				<insertNewline/>
 
         <insertValue value="com.android.volley, volley,1.1.1" />
+        <insertNewline/>
+
+        <insertValue value="com.facebook.android,audience-network-sdk,5.5.0"/>
         <insertNewline/>
 
 	</AARImports>

@@ -29,12 +29,9 @@
 	</prebuildCopies>
 
   <!-- AAR dependencies -->
-  <AARImports>
-    
-        
-        <insertValue value="com.facebook.android,audience-network-sdk,4.99.1"/>
-        <insertNewline/>
-      
+  <AARImports>    
+    <insertValue value="com.facebook.android,audience-network-sdk,5.5.0"/>
+    <insertNewline/>
   </AARImports>
 	
 

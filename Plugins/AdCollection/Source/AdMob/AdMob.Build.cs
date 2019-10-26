@@ -125,15 +125,7 @@ public class AdMob : ModuleRules
                 );
 
             string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
-
-            if(EngineMinorVersion == "20")
-            {
-                AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "AdMob420_UPL.xml"));
-            }
-            else
-            {
-                AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "AdMob_UPL.xml"));
-            }  
+            AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "AdMob_UPL.xml"));  
         }
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {

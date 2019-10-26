@@ -29,9 +29,49 @@
 
   <!-- AAR dependencies -->
   <AARImports>
-    <insertValue value="com.google.android.gms,play-services-ads,11.8.0"/>
+    <insertValue value="com.google.android.gms,play-services-ads,18.2.0"/>
     <insertNewline/>
+
+    <insertValue value="com.google.android.gms,play-services-auth,17.0.0"/>
+    <insertNewline/>
+
+    <insertValue value="com.google.android.gms,play-services-games,17.0.0"/>
+    <insertNewline/>
+
+    <insertValue value="com.google.android.gms,play-services-nearby,17.0.0"/>
+    <insertNewline/>
+
+    <insertValue value="com.google.android.gms,play-services-plus,17.0.0"/>
+    <insertNewline/>
+
+
+    <insertValue value="com.google.android.gms,play-services-ads,18.2.0"/>
   </AARImports>
+
+  <gradleProperties>
+    <insert>
+      android.useAndroidX=true
+      android.enableJetifier=true
+    </insert>
+  </gradleProperties>
+
+  <buildGradleAdditions>
+
+    <if condition="EnableTestSuite">
+      <true>
+        <insert>
+          android {
+
+          defaultConfig {
+          multiDexEnabled true
+          }
+          }
+
+        </insert>
+      </true>
+    </if>
+
+  </buildGradleAdditions>
 	
 
 	<!-- optional updates applied to AndroidManifest.xml -->
@@ -60,6 +100,11 @@
         <addAttribute tag="$RewardedVideoMetadata" name="android:name" value="com.epicgames.ue4.AdMob.RewardedVideoAdUnit"/>
         <addAttribute tag="$RewardedVideoMetadata" name="android:value" value="$S(RewardedVideoAdUnit)"/>
         <addElement tag="application" name="RewardedVideoMetadata"/>
+
+        <setElement result="AdmobAppId" value="meta-data"/>
+        <addAttribute tag="$AdmobAppId" name="android:name" value="com.google.android.gms.ads.APPLICATION_ID"/>
+        <addAttribute tag="$AdmobAppId" name="android:value" value="$S(AppId)"/>
+        <addElement tag="application" name="AdmobAppId"/>
 
         <!-- Add permissions -->
 				<addPermission android:name="android.permission.INTERNET" />

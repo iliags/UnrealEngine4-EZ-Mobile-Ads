@@ -28,9 +28,7 @@
 	<!-- AAR dependencies -->
 	<AARImports>
 		
-				<insertValue value="repository $S(PluginDir)/../ThirdParty/ThirdParty/Android/libs"/>
-				<insertNewline/>
-				<insertValue value="com.unity3d.ads,adunit,2.1.0" />
+        <insertValue value="com.unity3d.ads,unity-ads,3.2.0" />
 				<insertNewline/>
 			
 	</AARImports>
