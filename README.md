@@ -8,7 +8,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
  
 
 # FEATURES: 
-★ for people only use admob on android and ios, you can use this plugin on market(will more easy to use and package):
+★ for people only use admob+unity+vungle+chartboost on android and ios, you can use this plugin on market(will more easy to use and package):
    https://www.unrealengine.com/marketplace/en-US/slug/ada7fb755f4541a685b497b6de0d0163
 
 ★ 4 best game ad networks supported (more coming soon).
@@ -18,7 +18,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 ★  extremely easy  integrates just one line c++ code or blueprint for both IOS and Android. plugin automatic process ads reload
   and other detail.
 
-★  supoort unreal engine 4 4.21 4.22(you can found 4.19 and 4.20 support on branch 4.19 and 4.20).
+★  supoort unreal engine 4 4.21 4.22, 4.23(you can found 4.19 and 4.20 support on branch 4.19 and 4.20).
 
 ★ support via e-mail feixuwu@outlook.com
 
