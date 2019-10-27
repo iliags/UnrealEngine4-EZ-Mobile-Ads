@@ -17,29 +17,29 @@
     {
       "Name": "AdCollection",
       "Type": "Runtime",
-      "LoadingPhase" : "PostConfigInit"
+      "LoadingPhase": "Default"
     },
     {
-        "Name": "Unity",
-        "Type": "Runtime",
-        "LoadingPhase" : "PostConfigInit"
+      "Name": "Unity",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
     },
     {
-        "Name": "ChartBoost",
-        "Type": "Runtime",
-        "LoadingPhase" : "PostConfigInit"
+      "Name": "ChartBoost",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
     },
 
     {
-        "Name": "AdMob",
-        "Type": "Runtime",
-        "LoadingPhase" : "PostConfigInit"
+      "Name": "AdMob",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
     },
-	
-	{
-        "Name": "FacebookAds",
-        "Type": "Runtime",
-        "LoadingPhase" : "PostConfigInit"
+
+    {
+      "Name": "FacebookAds",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
     },
 
     {
