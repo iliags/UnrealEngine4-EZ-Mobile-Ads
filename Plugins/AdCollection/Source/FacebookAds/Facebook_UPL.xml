@@ -29,10 +29,13 @@
 	</prebuildCopies>
 
   <!-- AAR dependencies -->
-  <AARImports>    
-    <insertValue value="com.facebook.android,audience-network-sdk,5.5.0"/>
-    <insertNewline/>
-  </AARImports>
+	<AARImports>
+        
+
+        <insertValue value="com.facebook.android,audience-network-sdk,5.5.0"/>
+        <insertNewline/>
+
+	</AARImports>
 	
 
 	<!-- optional updates applied to AndroidManifest.xml -->

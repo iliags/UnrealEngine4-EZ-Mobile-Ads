@@ -46,6 +46,8 @@
 
 
     <insertValue value="com.google.android.gms,play-services-ads,18.2.0"/>
+    <insertNewline/>
+    
   </AARImports>
 
   <gradleProperties>
