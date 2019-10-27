@@ -85,10 +85,29 @@ public class AdMob : ModuleRules
         {
             //PrivateIncludePaths.Add("Private/IOS");
 
+            // admob
             PublicAdditionalFrameworks.Add(
             new UEBuildFramework(
             "GoogleMobileAds",														// Framework name
             "../ThirdParty/ThirdPartyFrameworks/GoogleMobileAds.embeddedframework.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "GoogleAppMeasurement",														// Framework name
+            "../ThirdParty/ThirdPartyFrameworks/GoogleAppMeasurement.embeddedframework.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "GoogleUtilities",														// Framework name
+            "../ThirdParty/ThirdPartyFrameworks/GoogleUtilities.embeddedframework.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "nanopb",														// Framework name
+            "../ThirdParty/ThirdPartyFrameworks/nanopb.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
@@ -112,7 +131,8 @@ public class AdMob : ModuleRules
             }
             );
 
-
+            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
+            AdditionalPropertiesForReceipt.Add("IOSPlugin", Path.Combine(PluginPath, "AdMob_IOS_UPL.xml"));
 
         }
         else if (Target.Platform == UnrealTargetPlatform.Android)
