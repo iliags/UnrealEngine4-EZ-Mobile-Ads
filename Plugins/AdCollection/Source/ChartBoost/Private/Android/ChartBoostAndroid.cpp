@@ -199,6 +199,31 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBo
 		);
 }
 
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativeDebugMessage(JNIEnv* jenv, jobject thiz, jstring debugMessage)
+{
+	const char* pDebugMessage = jenv->GetStringUTFChars(debugMessage, 0);
+	FString strDebugMessage = FString(UTF8_TO_TCHAR(pDebugMessage));
+
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeDebugMessage, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+			{
+				//FModuleManager
+				FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
+				if (pModule == nullptr)
+				{
+					return;
+				}
+
+
+				pModule->TriggerDebugMessageDelegates(strDebugMessage);
+			}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeDebugMessage),
+				nullptr,
+				ENamedThreads::GameThread
+				);
+}
+
 
 void FChartBoostModule::StartupModule()
 {

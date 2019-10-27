@@ -53,6 +53,7 @@ struct FRewardedStatus
 	int32 ChartBoostReward;
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDynamicDebugMessageDelegate, FString, debugMessage);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayRewardedDelegate, FRewardedStatus, RewardStatus);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicRewardedClosedDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicInterstitialShowDelegate);

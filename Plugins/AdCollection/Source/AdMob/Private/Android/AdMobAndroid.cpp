@@ -258,6 +258,31 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_n
 		);
 }
 
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativeDebugMessage(JNIEnv* jenv, jobject thiz, jstring debugMessage)
+{
+	const char* pDebugMessage = jenv->GetStringUTFChars(debugMessage, 0);
+	FString strDebugMessage = FString(UTF8_TO_TCHAR(pDebugMessage));
+
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeDebugMessage, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+			{
+				//FModuleManager
+				FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+				if (pModule == nullptr)
+				{
+					return;
+				}
+
+
+				pModule->TriggerDebugMessageDelegates(strDebugMessage);
+			}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeDebugMessage),
+				nullptr,
+				ENamedThreads::GameThread
+				);
+}
+
 void FAdMobModule::StartupModule()
 {
     // This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module

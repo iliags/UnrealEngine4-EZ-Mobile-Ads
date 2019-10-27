@@ -25,6 +25,9 @@ enum enAdsBannerPos
 };
 
 
+DECLARE_MULTICAST_DELEGATE_OneParam(FDebugMessage, FString);
+typedef FDebugMessage::FDelegate FDebugMessageDelegate;
+
 DECLARE_MULTICAST_DELEGATE_OneParam(FPlayRewardComplete, FRewardedStatus);
 typedef FPlayRewardComplete::FDelegate FPlayRewardCompleteDelegate;
 
@@ -136,5 +139,6 @@ public:
 	//DEFINE_ADS_DELEGATE(InterstitialClick);
 	//DEFINE_ADS_DELEGATE(InterstitialClosed);
 	//DEFINE_ADS_DELEGATE(PlayRewardClosed);
+	DEFINE_ADS_DELEGATE_ONE_PARAM(DebugMessage, FString);
 	DEFINE_ADS_DELEGATE_ONE_PARAM(PlayRewardComplete, FRewardedStatus);
 };
