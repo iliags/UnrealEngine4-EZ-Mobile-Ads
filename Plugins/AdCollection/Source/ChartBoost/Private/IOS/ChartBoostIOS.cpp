@@ -147,6 +147,27 @@ static void IOS_ChartboostInterstitialClose()
 		);
 }
 
+static void IOS_ChartboostRcvDebugMessage(NSString* debugMessage)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeRcvDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage, STATGROUP_TaskGraphTasks);
+	FString strDebugMessage = UTF8_TO_TCHAR([debugMessage cStringUsingEncoding : NSUTF8StringEncoding]);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+			{
+				FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
+				if (pModule == nullptr)
+				{
+					return;
+				}
+
+				pModule->TriggerDebugMessageDelegates(strDebugMessage);
+			}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage),
+				nullptr,
+				ENamedThreads::GameThread
+				);
+}
+
 
 void FChartBoostModule::StartupModule()
 {
@@ -164,7 +185,7 @@ void FChartBoostModule::StartupModule()
         dispatch_async(dispatch_get_main_queue(), ^{
             [[ChartBoostHelper GetDelegate] InitSDK:[NSString stringWithFString:appId] AppSignature:[NSString stringWithFString:appSignature] callback:&IOS_ChartBoostPlayComplete 
 			rewardClose : &IOS_ChartboostRewardClose  interstitialShow : &IOS_ChartboostInterstitialShow
-			interstitialClick : &IOS_ChartboostInterstitialClick interstitialClose : IOS_ChartboostInterstitialClose];
+			interstitialClick : &IOS_ChartboostInterstitialClick interstitialClose : IOS_ChartboostInterstitialClose rcvDebugMessage:&IOS_ChartboostRcvDebugMessage];
         });
     }
 }

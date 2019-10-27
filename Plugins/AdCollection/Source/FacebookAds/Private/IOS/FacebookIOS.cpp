@@ -180,6 +180,27 @@ static void IOS_FacebookInterstitialClose()
 		);
 }
 
+static void IOS_FacebookRcvDebugMessage(NSString* debugMessage)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeRcvDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage, STATGROUP_TaskGraphTasks);
+	FString strDebugMessage = UTF8_TO_TCHAR([debugMessage cStringUsingEncoding : NSUTF8StringEncoding]);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+			{
+				FFacebookModule* pModule = FModuleManager::Get().LoadModulePtr<FFacebookModule>(TEXT("FacebookAds"));
+				if (pModule == nullptr)
+				{
+					return;
+				}
+
+				pModule->TriggerDebugMessageDelegates(strDebugMessage);
+			}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage),
+				nullptr,
+				ENamedThreads::GameThread
+				);
+}
+
 void FFacebookModule::StartupModule()
 {
 	bool isEnable = false;
@@ -202,7 +223,7 @@ void FFacebookModule::StartupModule()
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[[FacebookHelper GetDelegate] InitSDK:curViewController BannerUnit : [NSString stringWithFString : bannerUnit]  InterstitalUnit : [NSString stringWithFString : InterstitalUnit] RewardedUnit : [NSString stringWithFString : rewardedUnit] callback : &IOS_FacebookPlayComplete 
 			rewardClose : &IOS_FacebookRewardClose  interstitialShow : &IOS_FacebookInterstitialShow
-			interstitialClick : &IOS_FacebookInterstitialClick interstitialClose : IOS_FacebookInterstitialClose];
+			interstitialClick : &IOS_FacebookInterstitialClick interstitialClose : IOS_FacebookInterstitialClose rcvDebugMessage:&IOS_FacebookRcvDebugMessage];
 			});
 	}
 

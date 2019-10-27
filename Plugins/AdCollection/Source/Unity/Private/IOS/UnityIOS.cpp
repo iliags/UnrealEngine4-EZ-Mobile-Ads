@@ -71,6 +71,27 @@ static void IOS_UnityRewardClose()
 		);
 }
 
+static void IOS_UnityRcvDebugMessage(NSString* debugMessage)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeRcvDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage, STATGROUP_TaskGraphTasks);
+	FString strDebugMessage = UTF8_TO_TCHAR([debugMessage cStringUsingEncoding : NSUTF8StringEncoding]);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+			{
+				FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity"));
+				if (pModule == nullptr)
+				{
+					return;
+				}
+
+				pModule->TriggerDebugMessageDelegates(strDebugMessage);
+			}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage),
+				nullptr,
+				ENamedThreads::GameThread
+				);
+}
+
 
 void FUnityModule::StartupModule()
 {
@@ -86,7 +107,7 @@ void FUnityModule::StartupModule()
 		GConfig->GetString(TEXT("/Script/AdCollectionEditor.UnitySetting"), TEXT("IOSPlacement"), placement, GEngineIni);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[UnityHelper GetDelegate] InitSDK:[NSString stringWithFString:appId] placement: [NSString stringWithFString : placement] callback:&IOS_UnityPlayComplete rewardClose:&IOS_UnityRewardClose];
+            [[UnityHelper GetDelegate] InitSDK:[NSString stringWithFString:appId] placement: [NSString stringWithFString : placement] callback:&IOS_UnityPlayComplete rewardClose:&IOS_UnityRewardClose rcvDebugMessage:&IOS_UnityRcvDebugMessage];
         });
     }
 
