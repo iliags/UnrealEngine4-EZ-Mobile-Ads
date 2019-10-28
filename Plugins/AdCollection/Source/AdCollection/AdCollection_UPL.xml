@@ -35,7 +35,7 @@
 
     <log text="Copying easyads files to staging"/>
 
-    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/sAndroid/libs" dst = "$S(BuildDir)/libs" />
+    <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/libs" dst = "$S(BuildDir)/libs" />
 
     <copyDir src="$S(PluginDir)/../ThirdParty/ThirdParty/Android/libs" dst = "$S(BuildDir)/gradle/app/src/main/libs" />
 
