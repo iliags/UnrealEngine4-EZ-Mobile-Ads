@@ -59,19 +59,7 @@
 
   <buildGradleAdditions>
 
-    <if condition="EnableTestSuite">
-      <true>
-        <insert>
-          android {
-
-          defaultConfig {
-          multiDexEnabled true
-          }
-          }
-
-        </insert>
-      </true>
-    </if>
+   
 
   </buildGradleAdditions>
 	

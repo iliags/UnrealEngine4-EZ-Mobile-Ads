@@ -37,12 +37,6 @@
     },
 
     {
-      "Name": "FacebookAds",
-      "Type": "Runtime",
-      "LoadingPhase": "Default"
-    },
-
-    {
       "Name": "AdCollectionEditor",
       "Type": "Editor",
       "LoadingPhase" : "Default"
