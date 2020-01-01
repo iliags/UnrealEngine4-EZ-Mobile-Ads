@@ -11,7 +11,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 ★ for people only use admob+unity+vungle+chartboost on android and ios, you can use this plugin on market(will more easy to use and package):
    https://www.unrealengine.com/marketplace/en-US/slug/ada7fb755f4541a685b497b6de0d0163
 
-★ 4 best game ad networks supported (more coming soon).
+★ 3 best game ad networks supported (more coming soon).
 
 ★  all ad  networks  can enable and disable in editor setting.
 
@@ -42,7 +42,6 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 
 ★ Unity(Rewarded Video)
 
-★ Facebook Audience(Banner, Interstitial, Rewarded Video)
 
 
 # Install
