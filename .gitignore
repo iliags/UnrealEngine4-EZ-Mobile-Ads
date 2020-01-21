@@ -16,3 +16,5 @@ Build
 *.apk
 *.ipa
 **/*.ipa
+
+*.ds_store
